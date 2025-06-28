@@ -1,252 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Realms</title>
-    <style>
-        {PREFIX FREE (if enabled)}
-  {MODERNIZR (if enabled)}
-
-        /* Reset styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
-
-        /* Background styling */
-        .game-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: -1;
-        }
-
-        /* Centered cutscene text */
-        .cutscene-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 22px;
-            text-align: center;
-            z-index: 5;
-            display: none;
-        }
-
-        /* Start screen */
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: transparent;
-            z-index: 1;
-        }
-
-        .play-button {
-            font-size: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .play-button:hover {
-            background-color: #45a049;
-        }
-
-        /* Aloe styling */
-        .aloe {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, purple, darkblue);
-            border-radius: 15px;
-            z-index: 2;
-        }
-
-        /* Corrupted Pokémon styling */
-        .corrupted {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-        }
-
-        /* Teleport effect */
-        .teleport {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, white, transparent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: teleportEffect 1s ease-in-out forwards;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes teleportEffect {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(3);
-            }
-        }
-
-        /* Realm styling */
-        .realm {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: rgba(0, 128, 255, 0.8);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 128, 255, 0.8);
-            z-index: 1;
-        }
-
-        .fragment {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: gold;
-            border-radius: 50%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Älmhult Hindu Mandir</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8e1;
+      color: #5c0a00;
+    }
+    header {
+      background: #c62828;
+      color: #ffeb3b;
+      padding: 1.5em;
+      text-align: center;
+      box-shadow: 0 4px 10px #b71c1caa;
+    }
+    .logo {
+      width: 80px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 3px #fdd835cc);
+      margin-bottom: 0.5em;
+      transition: filter 0.3s ease;
+    }
+    .logo:hover {
+      filter: drop-shadow(0 0 8px #fff176cc);
+    }
+    nav {
+      background: #b71c1c; /* darker red */
+      display: flex;
+      justify-content: center;
+      gap: 1.2em;
+      padding: 0.7em 0;
+      box-shadow: inset 0 -4px 10px #e5393555;
+      border-top: 2px solid #fbc02d;
+      border-bottom: 2px solid #fbc02d;
+    }
+    nav a {
+      color: #fffde7;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-shadow: 0 0 4px #fdd835cc;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff176; /* bright yellow */
+      text-shadow: 0 0 8px #fff176cc;
+      text-decoration: underline;
+    }
+    .language-switcher {
+      margin: 1em auto;
+      max-width: 900px;
+      text-align: right;
+      padding-right: 2.5em;
+      font-weight: 700;
+      color: #b71c1c;
+    }
+    .language-switcher button {
+      background: none;
+      border: none;
+      color: #b71c1c;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1em;
+      margin-left: 1em;
+      text-decoration: underline;
+    }
+    .language-switcher button:hover {
+      color: #d32f2f;
+    }
+    section {
+      padding: 2em 2.5em;
+      max-width: 900px;
+      margin: 1.5em auto;
+      background: #fff9c4cc; /* pale translucent yellow */
+      border-radius: 10px;
+      box-shadow: 0 0 15px #fdd835bb;
+      color: #5c0a00;
+    }
+    section h2 {
+      color: #b71c1c;
+      text-shadow: 0 0 6px #fbc02dcc;
+      margin-bottom: 0.6em;
+    }
+    section p, section li {
+      line-height: 1.5em;
+      font-weight: 600;
+    }
+    ul {
+      padding-left: 1.4em;
+    }
+    .opening-hours {
+      background: #ffe082cc; /* soft gold */
+      border-radius: 8px;
+      padding: 1.2em 1.8em;
+      max-width: 400px;
+      box-shadow: 0 0 15px #fbc02dcc;
+      color: #5c0a00;
+    }
+    button.swish-btn {
+      margin-top: 1.3em;
+      padding: 14px 28px;
+      background-color: #fbc02d;
+      color: #b71c1c; /* dark red */
+      border: none;
+      border-radius: 8px;
+      font-size: 1.15em;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 12px #fbc02dcc;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-shadow: none;
+    }
+    button.swish-btn:hover {
+      background-color: #fdd835;
+      box-shadow: 0 0 20px #fff176cc;
+    }
+    #swish-box {
+      display: none;
+      margin-top: 1.5em;
+      background: #fffde7dd;
+      padding: 1.3em 2em;
+      border-left: 8px solid #fbc02d;
+      max-width: 340px;
+      border-radius: 8px;
+      box-shadow: 0 0 18px #fbc02dcc;
+      color: #5c0a00;
+      font-weight: 700;
+    }
+    footer {
+      background: #c62828;
+      color: #fff9c4;
+      text-align: center;
+      padding: 1.2em;
+      font-size: 0.9em;
+      margin-top: 3em;
+      box-shadow: 0 -5px 15px #b71c1cbb;
+      border-top: 2px solid #fbc02d;
+    }
+    .studio-credit {
+      font-size: 0.85em;
+      color: #b71c1c88;
+      margin-top: 0.5em;
+      font-style: italic;
+    }
+    #contact a {
+      color: #b71c1c;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    #contact a:hover {
+      color: #d32f2f;
+    }
+    #social {
+      margin-top: 2em;
+      text-align: center;
+    }
+    #social a {
+      color: #b71c1c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+    }
+    #social a:hover {
+      color: #d32f2f;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <!-- Background -->
-    <div class="game-background"></div>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Om_symbol.svg/1024px-Om_symbol.svg.png" alt="Om" class="logo" onclick="playBell()" />
+    <h1>Älmhult Hindu Mandir</h1>
+    <p>Skånevägen 16, 343 34 Älmhult, Sweden</p>
+  </header>
 
-    <div class="centered" id="start-screen">
-        <button class="play-button" id="play-btn">Start Game</button>
+  <div class="language-switcher" aria-label="Language selector">
+    Language:
+    <button onclick="setLanguage('en')" id="btn-en">English</button>
+    <button onclick="setLanguage('sv')" id="btn-sv">Svenska</button>
+  </div>
+
+  <nav>
+    <a href="#about" data-lang="about">About</a>
+    <a href="#hours" data-lang="hours">Opening Hours</a>
+    <a href="#events" data-lang="events">Events</a>
+    <a href="#gallery" data-lang="gallery">Gallery</a>
+    <a href="#contact" data-lang="contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2 data-lang="about-title">About the Temple</h2>
+    <p data-lang="about-text">Hindu temple or Mandir is referred to a spiritual place to worship Gods. Hinduism is not only a religion but also a way of life. Scholars regard Hinduism as a combination of different Indian cultures and traditions, with diverse roots.</p>
+  </section>
+
+  <section id="hours">
+    <h2 data-lang="hours-title">Opening Hours</h2>
+    <div class="opening-hours">
+      <p data-lang="hours-sun">Sunday: 6–7 PM</p>
+      <p data-lang="hours-mon">Monday: 6–7 PM</p>
+      <p data-lang="hours-tue">Tuesday: 6–7 PM</p>
+      <p data-lang="hours-wed">Wednesday: 6–7 PM</p>
+      <p data-lang="hours-thu">Thursday: 6–7 PM</p>
+      <p data-lang="hours-fri">Friday: 6–7 PM</p>
+      <p data-lang="hours-sat">Saturday: 6–7 PM</p>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2 data-lang="events-title">Upcoming Events</h2>
+    <ul>
+      <li data-lang="events-diwali">🪔 Diwali Festival – November</li>
+      <li data-lang="events-puja">🕉️ Weekly Puja – Every Sunday</li>
+      <li data-lang="events-holi">🎉 Holi Celebration – March</li>
+      <li data-lang="events-ganesh">🙏 Special Aarti for Ganesh Chaturthi – August</li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <h2 data-lang="gallery-title">Gallery</h2>
+    <p data-lang="gallery-text">Coming soon: Photos from our temple activities and festivals.</p>
+  </section>
+
+  <section id="contact">
+    <h2 data-lang="contact-title">Contact</h2>
+    <p data-lang="contact-email">Email: <a href="mailto:board@ahma.se">board@ahma.se</a></p>
+    <p data-lang="contact-phone">Phone: [Coming Soon]</p>
+    <p data-lang="contact-swish">Swish: <strong>123 077 1881</strong></p>
+    <button class="swish-btn" onclick="showSwish()" data-lang="donate-btn">📱 Donate via Swish</button>
+    <div id="swish-box">
+      <p data-lang="swish-instruction">Open your Swish app and send to:</p>
+      <h3 style="margin: 0;">123 077 1881</h3>
+      <p data-lang="swish-thanks">Thank you for your support!</p>
     </div>
 
-    <!-- Cutscene Text -->
-    <div id="cutscene-text" class="cutscene-text"></div>
+    <div id="social" aria-label="Social media links">
+      <h3 data-lang="follow-us-title">Follow Us</h3>
+      <a href="https://www.facebook.com/share/1Ahev4Y9Pa/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page">
+        Facebook Page
+      </a>
+    </div>
+  </section>
 
-    <script>
-        const startButton = document.getElementById('play-btn');
-        const cutsceneText = document.getElementById('cutscene-text');
-        const startScreen = document.getElementById('start-screen');
+  <footer>
+    <div class="studio-credit">By IMpasta Studios</div>
+  </footer>
 
-        startButton.addEventListener('click', () => {
-            startScreen.style.display = 'none';
-            startCutscene();
+  <audio id="bell-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto"></audio>
+  <script>
+    const translations = {
+      en: {
+        about: "About",
+        aboutTitle: "About the Temple",
+        aboutText: "Hindu temple or Mandir is referred to a spiritual place to worship Gods. Hinduism is not only a religion but also a way of life. Scholars regard Hinduism as a combination of different Indian cultures and traditions, with diverse roots.",
+        hours: "Opening Hours",
+        hoursTitle: "Opening Hours",
+        hoursSun: "Sunday: 6–7 PM",
+        hoursMon: "Monday: 6–7 PM",
+        hoursTue: "Tuesday: 6–7 PM",
+        hoursWed: "Wednesday: 6–7 PM",
+        hoursThu: "Thursday: 6–7 PM",
+        hoursFri: "Friday: 6–7 PM",
+        hoursSat: "Saturday: 6–7 PM",
+        events: "Events",
+        eventsTitle: "Upcoming Events",
+        eventsDiwali: "🪔 Diwali Festival – November",
+        eventsPuja: "🕉️ Weekly Puja – Every Sunday",
+        eventsHoli: "🎉 Holi Celebration – March",
+        eventsGanesh: "🙏 Special Aarti for Ganesh Chaturthi – August",
+        gallery: "Gallery",
+        galleryTitle: "Gallery",
+        galleryText: "Coming soon: Photos from our temple activities and festivals.",
+        contact: "Contact",
+        contactTitle: "Contact",
+        contactEmail: "Email: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Phone: [Coming Soon]",
+        contactSwish: "Swish: <strong>123 077 1881</strong>",
+        donateBtn: "📱 Donate via Swish",
+        swishInstruction: "Open your Swish app and send to:",
+        swishThanks: "Thank you for your support!",
+        followUsTitle: "Follow Us"
+      },
+      sv: {
+        about: "Om",
+        aboutTitle: "Om Templet",
+        aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar. Hinduism är inte bara en religion utan också ett sätt att leva. Forskare ser hinduismen som en kombination av olika indiska kulturer och traditioner, med olika rötter.",
+        hours: "Öppettider",
+        hoursTitle: "Öppettider",
+        hoursSun: "Söndag: 18–19",
+        hoursMon: "Måndag: 18–19",
+        hoursTue: "Tisdag: 18–19",
+        hoursWed: "Onsdag: 18–19",
+        hoursThu: "Torsdag: 18–19",
+        hoursFri: "Fredag: 18–19",
+        hoursSat: "Lördag: 18–19",
+        events: "Evenemang",
+        eventsTitle: "Kommande Evenemang",
+        eventsDiwali: "🪔 Diwali Festival – November",
+        eventsPuja: "🕉️ Veckovis Puja – Varje söndag",
+        eventsHoli: "🎉 Holi Firande – Mars",
+        eventsGanesh: "🙏 Special Aarti för Ganesh Chaturthi – Augusti",
+        gallery: "Galleri",
+        galleryTitle: "Galleri",
+        galleryText: "Kommer snart: Foton från våra tempelaktiviteter och festivaler.",
+        contact: "Kontakt",
+        contactTitle: "Kontakt",
+        contactEmail: "E-post: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Telefon: [Kommer snart]",
+        contactSwish: "Swish: <strong>123 077 1881</strong>",
+        donateBtn: "📱 Donera via Swish",
+        swishInstruction: "Öppna din Swish-app och skicka till:",
+        swishThanks: "Tack för ditt stöd!",
+        followUsTitle: "Följ oss"
+      }
+    };
+
+    function setLanguage(lang) {
+      // update nav
+      document.querySelectorAll('nav a').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (key && translations[lang][key]) el.textContent = translations[lang][key];
+      });
+      // update section titles & text
+      for (const key in translations[lang]) {
+        const elements = document.querySelectorAll(`[data-lang="${key}"]`);
+        elements.forEach(el => {
+          el.innerHTML = translations[lang][key];
         });
+      }
+    }
 
-        const narrative = [
-            "Before the universe existed, there was a being of pure power.",
-            "The entity is called Aloe (Pre-Evolution). It decided to make the universe as we know it.",
-            "As it could feel distant threats approaching..."
-        ];
-        let currentLine = 0;
+    // Default language
+    setLanguage('en');
 
-        function startCutscene() {
-            cutsceneText.style.display = 'block';
-            cutsceneText.innerText = narrative[currentLine];
-            currentLine++;
-
-            const interval = setInterval(() => {
-                if (currentLine < narrative.length) {
-                    cutsceneText.innerText = narrative[currentLine];
-                    if (narrative[currentLine] === "As it could feel distant threats approaching...") {
-                        playAnimationSequence();
-                    }
-                    currentLine++;
-                } else {
-                    clearInterval(interval);
-                    cutsceneText.style.display = 'none'; // Hide text before starting animation
-                }
-            }, 4000); // Transition between lines every 4 seconds
-        }
-
-        /* Animation Sequence */
-        function playAnimationSequence() {
-            // Step 1: Aloe appears and moves
-            const aloe = document.createElement('div');
-            aloe.className = 'aloe';
-            aloe.style.top = `${Math.random() * (window.innerHeight - 100)}px`; // Random starting position
-            aloe.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
-            document.body.appendChild(aloe);
-
-            // Step 2: Corrupted Pokémon appear and chase Aloe
-            const corruptedPokemon = [];
-            for (let i = 0; i < 3; i++) {
-                const corrupted = document.createElement('div');
-                corrupted.className = 'corrupted';
-                corrupted.style.top = `${Math.random() * (window.innerHeight - 70)}px`;
-                corrupted.style.left = `${Math.random() * (window.innerWidth - 70)}px`;
-                document.body.appendChild(corrupted);
-                corruptedPokemon.push(corrupted);
-            }
-
-            // Step 3: Teleport Aloe
-            setTimeout(() => {
-                corruptedPokemon.forEach(pokemon => pokemon.remove()); // Remove corrupted Pokémon
-                const teleportEffect = document.createElement('div');
-                teleportEffect.className = 'teleport';
-                document.body.appendChild(teleportEffect);
-                aloe.remove(); // Aloe teleports away
-            }, 3000);
-
-            // Step 4: Create realms (non-overlapping, within screen bounds)
-            setTimeout(() => {
-                const realmPositions = []; // Track positions for collision-free placement
-                for (let i = 0; i < 5; i++) {
-                    const realm = document.createElement('div');
-                    realm.className = 'realm';
-
-                    // Generate positions ensuring no overlap and within bounds
-                    let positionValid = false;
-                    let top, left;
-
-                    while (!positionValid) {
-                        top = Math.random() * (window.innerHeight - 150); // Realm height
-                        left = Math.random() * (window.innerWidth - 150); // Realm width
-
-
-                        positionValid = !realmPositions.some(pos => {
-                            return (
-                                Math.abs(pos.top - top) < 150 && // Minimum gap of 150px
-                                Math.abs(pos.left - left) < 150
-                            );
-                        });
-                    }
-
-
-                    realmPositions.push({ top, left });
-                    realm.style.top = `${top}px`;
-                    realm.style.left = `${left}px`;
-                    document.body.appendChild(realm);
-                }
-            }, 5000);
-
-
-            setTimeout(() => {
-                for (let i = 0; i < 10; i++) {
-                    const fragment = document.createElement('div');
-                    fragment.className = 'fragment';
-                    fragment.style.top = '50%';
-                    fragment.style.left = '50%';
-                    document.body.appendChild(fragment);
-                }
-            }, 8000);
-        }
-    </script>
+    function playBell() {
+      document.getElementById('bell-sound').play();
+    }
+    function showSwish() {
+      const box = document.getElementById('swish-box');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
