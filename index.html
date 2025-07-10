@@ -29,7 +29,7 @@
       filter: drop-shadow(0 0 8px #fff176cc);
     }
     nav {
-      background: #b71c1c; /* darker red */
+      background: #b71c1c;
       display: flex;
       justify-content: center;
       gap: 1.2em;
@@ -47,7 +47,7 @@
       transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #fff176; /* bright yellow */
+      color: #fff176;
       text-shadow: 0 0 8px #fff176cc;
       text-decoration: underline;
     }
@@ -76,7 +76,7 @@
       padding: 2em 2.5em;
       max-width: 900px;
       margin: 1.5em auto;
-      background: #fff9c4cc; /* pale translucent yellow */
+      background: #fff9c4cc;
       border-radius: 10px;
       box-shadow: 0 0 15px #fdd835bb;
       color: #5c0a00;
@@ -94,7 +94,7 @@
       padding-left: 1.4em;
     }
     .opening-hours {
-      background: #ffe082cc; /* soft gold */
+      background: #ffe082cc;
       border-radius: 8px;
       padding: 1.2em 1.8em;
       max-width: 400px;
@@ -105,7 +105,7 @@
       margin-top: 1.3em;
       padding: 14px 28px;
       background-color: #fbc02d;
-      color: #b71c1c; /* dark red */
+      color: #b71c1c;
       border: none;
       border-radius: 8px;
       font-size: 1.15em;
@@ -113,7 +113,6 @@
       cursor: pointer;
       box-shadow: 0 0 12px #fbc02dcc;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      text-shadow: none;
     }
     button.swish-btn:hover {
       background-color: #fdd835;
@@ -174,7 +173,7 @@
 </head>
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Om_symbol.svg/1024px-Om_symbol.svg.png" alt="Om" class="logo" onclick="playBell()" />
+    <img src="Logo.png" alt="Mandir Logo" class="logo" />
     <h1>Älmhult Hindu Mandir</h1>
     <p>Skånevägen 16, 343 34 Älmhult, Sweden</p>
   </header>
@@ -250,13 +249,12 @@
     <div class="studio-credit">By IMpasta Studios</div>
   </footer>
 
-  <audio id="bell-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto"></audio>
   <script>
     const translations = {
       en: {
         about: "About",
         aboutTitle: "About the Temple",
-        aboutText: "Hindu temple or Mandir is referred to a spiritual place to worship Gods. Hinduism is not only a religion but also a way of life. Scholars regard Hinduism as a combination of different Indian cultures and traditions, with diverse roots.",
+        aboutText: "Hindu temple or Mandir is referred to a spiritual place to worship Gods...",
         hours: "Opening Hours",
         hoursTitle: "Opening Hours",
         hoursSun: "Sunday: 6–7 PM",
@@ -288,7 +286,7 @@
       sv: {
         about: "Om",
         aboutTitle: "Om Templet",
-        aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar. Hinduism är inte bara en religion utan också ett sätt att leva. Forskare ser hinduismen som en kombination av olika indiska kulturer och traditioner, med olika rötter.",
+        aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar...",
         hours: "Öppettider",
         hoursTitle: "Öppettider",
         hoursSun: "Söndag: 18–19",
@@ -320,26 +318,19 @@
     };
 
     function setLanguage(lang) {
-      // update nav
       document.querySelectorAll('nav a').forEach(el => {
         const key = el.getAttribute('data-lang');
         if (key && translations[lang][key]) el.textContent = translations[lang][key];
       });
-      // update section titles & text
       for (const key in translations[lang]) {
-        const elements = document.querySelectorAll(`[data-lang="${key}"]`);
-        elements.forEach(el => {
+        document.querySelectorAll(`[data-lang="${key}"]`).forEach(el => {
           el.innerHTML = translations[lang][key];
         });
       }
     }
 
-    // Default language
     setLanguage('en');
 
-    function playBell() {
-      document.getElementById('bell-sound').play();
-    }
     function showSwish() {
       const box = document.getElementById('swish-box');
       box.style.display = box.style.display === 'none' ? 'block' : 'none';
