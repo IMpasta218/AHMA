@@ -19,8 +19,8 @@
       box-shadow: 0 4px 10px #b71c1caa;
     }
     .logo {
-      width: 80px;
-      cursor: pointer;
+      width: 140px;
+      cursor: default;
       filter: drop-shadow(0 0 3px #fdd835cc);
       margin-bottom: 0.5em;
       transition: filter 0.3s ease;
@@ -113,6 +113,7 @@
       cursor: pointer;
       box-shadow: 0 0 12px #fbc02dcc;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-shadow: none;
     }
     button.swish-btn:hover {
       background-color: #fdd835;
@@ -237,11 +238,9 @@
       <p data-lang="swish-thanks">Thank you for your support!</p>
     </div>
 
-    <div id="social" aria-label="Social media links">
+    <div id="social">
       <h3 data-lang="follow-us-title">Follow Us</h3>
-      <a href="https://www.facebook.com/share/1Ahev4Y9Pa/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page">
-        Facebook Page
-      </a>
+      <a href="https://www.facebook.com/share/1Ahev4Y9Pa/" target="_blank" rel="noopener">Facebook Page</a>
     </div>
   </section>
 
@@ -252,75 +251,33 @@
   <script>
     const translations = {
       en: {
-        about: "About",
-        aboutTitle: "About the Temple",
-        aboutText: "Hindu temple or Mandir is referred to a spiritual place to worship Gods...",
-        hours: "Opening Hours",
-        hoursTitle: "Opening Hours",
-        hoursSun: "Sunday: 6–7 PM",
-        hoursMon: "Monday: 6–7 PM",
-        hoursTue: "Tuesday: 6–7 PM",
-        hoursWed: "Wednesday: 6–7 PM",
-        hoursThu: "Thursday: 6–7 PM",
-        hoursFri: "Friday: 6–7 PM",
-        hoursSat: "Saturday: 6–7 PM",
-        events: "Events",
-        eventsTitle: "Upcoming Events",
-        eventsDiwali: "🪔 Diwali Festival – November",
-        eventsPuja: "🕉️ Weekly Puja – Every Sunday",
-        eventsHoli: "🎉 Holi Celebration – March",
-        eventsGanesh: "🙏 Special Aarti for Ganesh Chaturthi – August",
-        gallery: "Gallery",
-        galleryTitle: "Gallery",
-        galleryText: "Coming soon: Photos from our temple activities and festivals.",
-        contact: "Contact",
-        contactTitle: "Contact",
-        contactEmail: "Email: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
-        contactPhone: "Phone: [Coming Soon]",
-        contactSwish: "Swish: <strong>123 077 1881</strong>",
-        donateBtn: "📱 Donate via Swish",
-        swishInstruction: "Open your Swish app and send to:",
-        swishThanks: "Thank you for your support!",
-        followUsTitle: "Follow Us"
+        about: "About", aboutTitle: "About the Temple", aboutText: "Hindu temple or Mandir is referred to a spiritual place...",
+        hours: "Opening Hours", hoursTitle: "Opening Hours", hoursSun: "Sunday: 6–7 PM", hoursMon: "Monday: 6–7 PM", hoursTue: "Tuesday: 6–7 PM",
+        hoursWed: "Wednesday: 6–7 PM", hoursThu: "Thursday: 6–7 PM", hoursFri: "Friday: 6–7 PM", hoursSat: "Saturday: 6–7 PM",
+        events: "Events", eventsTitle: "Upcoming Events", eventsDiwali: "🪔 Diwali Festival – November", eventsPuja: "🕉️ Weekly Puja – Every Sunday",
+        eventsHoli: "🎉 Holi Celebration – March", eventsGanesh: "🙏 Special Aarti for Ganesh Chaturthi – August",
+        gallery: "Gallery", galleryTitle: "Gallery", galleryText: "Coming soon: Photos from our temple activities and festivals.",
+        contact: "Contact", contactTitle: "Contact", contactEmail: "Email: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Phone: [Coming Soon]", contactSwish: "Swish: <strong>123 077 1881</strong>", donateBtn: "📱 Donate via Swish",
+        swishInstruction: "Open your Swish app and send to:", swishThanks: "Thank you for your support!", followUsTitle: "Follow Us"
       },
       sv: {
-        about: "Om",
-        aboutTitle: "Om Templet",
-        aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar...",
-        hours: "Öppettider",
-        hoursTitle: "Öppettider",
-        hoursSun: "Söndag: 18–19",
-        hoursMon: "Måndag: 18–19",
-        hoursTue: "Tisdag: 18–19",
-        hoursWed: "Onsdag: 18–19",
-        hoursThu: "Torsdag: 18–19",
-        hoursFri: "Fredag: 18–19",
-        hoursSat: "Lördag: 18–19",
-        events: "Evenemang",
-        eventsTitle: "Kommande Evenemang",
-        eventsDiwali: "🪔 Diwali Festival – November",
-        eventsPuja: "🕉️ Veckovis Puja – Varje söndag",
-        eventsHoli: "🎉 Holi Firande – Mars",
-        eventsGanesh: "🙏 Special Aarti för Ganesh Chaturthi – Augusti",
-        gallery: "Galleri",
-        galleryTitle: "Galleri",
-        galleryText: "Kommer snart: Foton från våra tempelaktiviteter och festivaler.",
-        contact: "Kontakt",
-        contactTitle: "Kontakt",
-        contactEmail: "E-post: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
-        contactPhone: "Telefon: [Kommer snart]",
-        contactSwish: "Swish: <strong>123 077 1881</strong>",
-        donateBtn: "📱 Donera via Swish",
-        swishInstruction: "Öppna din Swish-app och skicka till:",
-        swishThanks: "Tack för ditt stöd!",
-        followUsTitle: "Följ oss"
+        about: "Om", aboutTitle: "Om Templet", aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar...",
+        hours: "Öppettider", hoursTitle: "Öppettider", hoursSun: "Söndag: 18–19", hoursMon: "Måndag: 18–19", hoursTue: "Tisdag: 18–19",
+        hoursWed: "Onsdag: 18–19", hoursThu: "Torsdag: 18–19", hoursFri: "Fredag: 18–19", hoursSat: "Lördag: 18–19",
+        events: "Evenemang", eventsTitle: "Kommande Evenemang", eventsDiwali: "🪔 Diwali Festival – November", eventsPuja: "🕉️ Veckovis Puja – Varje söndag",
+        eventsHoli: "🎉 Holi Firande – Mars", eventsGanesh: "🙏 Special Aarti för Ganesh Chaturthi – Augusti",
+        gallery: "Galleri", galleryTitle: "Galleri", galleryText: "Kommer snart: Foton från våra tempelaktiviteter och festivaler.",
+        contact: "Kontakt", contactTitle: "Kontakt", contactEmail: "E-post: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Telefon: [Kommer snart]", contactSwish: "Swish: <strong>123 077 1881</strong>", donateBtn: "📱 Donera via Swish",
+        swishInstruction: "Öppna din Swish-app och skicka till:", swishThanks: "Tack för ditt stöd!", followUsTitle: "Följ oss"
       }
     };
 
     function setLanguage(lang) {
       document.querySelectorAll('nav a').forEach(el => {
         const key = el.getAttribute('data-lang');
-        if (key && translations[lang][key]) el.textContent = translations[lang][key];
+        if (translations[lang][key]) el.textContent = translations[lang][key];
       });
       for (const key in translations[lang]) {
         document.querySelectorAll(`[data-lang="${key}"]`).forEach(el => {
@@ -328,7 +285,6 @@
         });
       }
     }
-
     setLanguage('en');
 
     function showSwish() {
