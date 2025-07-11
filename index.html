@@ -19,8 +19,8 @@
       box-shadow: 0 4px 10px #b71c1caa;
     }
     .logo {
-      width: 140px;
-      cursor: default;
+      width: 80px;
+      cursor: pointer;
       filter: drop-shadow(0 0 3px #fdd835cc);
       margin-bottom: 0.5em;
       transition: filter 0.3s ease;
@@ -113,7 +113,6 @@
       cursor: pointer;
       box-shadow: 0 0 12px #fbc02dcc;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      text-shadow: none;
     }
     button.swish-btn:hover {
       background-color: #fdd835;
@@ -130,6 +129,13 @@
       box-shadow: 0 0 18px #fbc02dcc;
       color: #5c0a00;
       font-weight: 700;
+    }
+    #swish-box img {
+      display: block;
+      margin: 1em auto 0;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #fbc02dcc;
     }
     footer {
       background: #c62828;
@@ -174,7 +180,7 @@
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="Mandir Logo" class="logo" />
+    <img src="Logo.png" alt="Om" class="logo" onclick="playBell()" />
     <h1>Älmhult Hindu Mandir</h1>
     <p>Skånevägen 16, 343 34 Älmhult, Sweden</p>
   </header>
@@ -236,11 +242,14 @@
       <p data-lang="swish-instruction">Open your Swish app and send to:</p>
       <h3 style="margin: 0;">123 077 1881</h3>
       <p data-lang="swish-thanks">Thank you for your support!</p>
+      <img src="Swish.jpg" alt="Swish QR Code" />
     </div>
 
-    <div id="social">
+    <div id="social" aria-label="Social media links">
       <h3 data-lang="follow-us-title">Follow Us</h3>
-      <a href="https://www.facebook.com/share/1Ahev4Y9Pa/" target="_blank" rel="noopener">Facebook Page</a>
+      <a href="https://www.facebook.com/share/1Ahev4Y9Pa/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page">
+        Facebook Page
+      </a>
     </div>
   </section>
 
@@ -248,45 +257,93 @@
     <div class="studio-credit">By IMpasta Studios</div>
   </footer>
 
+  <audio id="bell-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto"></audio>
   <script>
     const translations = {
       en: {
-        about: "About", aboutTitle: "About the Temple", aboutText: "Hindu temple or Mandir is referred to a spiritual place...",
-        hours: "Opening Hours", hoursTitle: "Opening Hours", hoursSun: "Sunday: 6–7 PM", hoursMon: "Monday: 6–7 PM", hoursTue: "Tuesday: 6–7 PM",
-        hoursWed: "Wednesday: 6–7 PM", hoursThu: "Thursday: 6–7 PM", hoursFri: "Friday: 6–7 PM", hoursSat: "Saturday: 6–7 PM",
-        events: "Events", eventsTitle: "Upcoming Events", eventsDiwali: "🪔 Diwali Festival – November", eventsPuja: "🕉️ Weekly Puja – Every Sunday",
-        eventsHoli: "🎉 Holi Celebration – March", eventsGanesh: "🙏 Special Aarti for Ganesh Chaturthi – August",
-        gallery: "Gallery", galleryTitle: "Gallery", galleryText: "Coming soon: Photos from our temple activities and festivals.",
-        contact: "Contact", contactTitle: "Contact", contactEmail: "Email: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
-        contactPhone: "Phone: [Coming Soon]", contactSwish: "Swish: <strong>123 077 1881</strong>", donateBtn: "📱 Donate via Swish",
-        swishInstruction: "Open your Swish app and send to:", swishThanks: "Thank you for your support!", followUsTitle: "Follow Us"
+        about: "About",
+        aboutTitle: "About the Temple",
+        aboutText: "Hindu temple or Mandir is referred to a spiritual place to worship Gods. Hinduism is not only a religion but also a way of life. Scholars regard Hinduism as a combination of different Indian cultures and traditions, with diverse roots.",
+        hours: "Opening Hours",
+        hoursTitle: "Opening Hours",
+        hoursSun: "Sunday: 6–7 PM",
+        hoursMon: "Monday: 6–7 PM",
+        hoursTue: "Tuesday: 6–7 PM",
+        hoursWed: "Wednesday: 6–7 PM",
+        hoursThu: "Thursday: 6–7 PM",
+        hoursFri: "Friday: 6–7 PM",
+        hoursSat: "Saturday: 6–7 PM",
+        events: "Events",
+        eventsTitle: "Upcoming Events",
+        eventsDiwali: "🪔 Diwali Festival – November",
+        eventsPuja: "🕉️ Weekly Puja – Every Sunday",
+        eventsHoli: "🎉 Holi Celebration – March",
+        eventsGanesh: "🙏 Special Aarti for Ganesh Chaturthi – August",
+        gallery: "Gallery",
+        galleryTitle: "Gallery",
+        galleryText: "Coming soon: Photos from our temple activities and festivals.",
+        contact: "Contact",
+        contactTitle: "Contact",
+        contactEmail: "Email: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Phone: [Coming Soon]",
+        contactSwish: "Swish: <strong>123 077 1881</strong>",
+        donateBtn: "📱 Donate via Swish",
+        swishInstruction: "Open your Swish app and send to:",
+        swishThanks: "Thank you for your support!",
+        followUsTitle: "Follow Us"
       },
       sv: {
-        about: "Om", aboutTitle: "Om Templet", aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar...",
-        hours: "Öppettider", hoursTitle: "Öppettider", hoursSun: "Söndag: 18–19", hoursMon: "Måndag: 18–19", hoursTue: "Tisdag: 18–19",
-        hoursWed: "Onsdag: 18–19", hoursThu: "Torsdag: 18–19", hoursFri: "Fredag: 18–19", hoursSat: "Lördag: 18–19",
-        events: "Evenemang", eventsTitle: "Kommande Evenemang", eventsDiwali: "🪔 Diwali Festival – November", eventsPuja: "🕉️ Veckovis Puja – Varje söndag",
-        eventsHoli: "🎉 Holi Firande – Mars", eventsGanesh: "🙏 Special Aarti för Ganesh Chaturthi – Augusti",
-        gallery: "Galleri", galleryTitle: "Galleri", galleryText: "Kommer snart: Foton från våra tempelaktiviteter och festivaler.",
-        contact: "Kontakt", contactTitle: "Kontakt", contactEmail: "E-post: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
-        contactPhone: "Telefon: [Kommer snart]", contactSwish: "Swish: <strong>123 077 1881</strong>", donateBtn: "📱 Donera via Swish",
-        swishInstruction: "Öppna din Swish-app och skicka till:", swishThanks: "Tack för ditt stöd!", followUsTitle: "Följ oss"
+        about: "Om",
+        aboutTitle: "Om Templet",
+        aboutText: "Ett hinduiskt tempel eller Mandir är en andlig plats för att tillbe gudar. Hinduism är inte bara en religion utan också ett sätt att leva. Forskare ser hinduismen som en kombination av olika indiska kulturer och traditioner, med olika rötter.",
+        hours: "Öppettider",
+        hoursTitle: "Öppettider",
+        hoursSun: "Söndag: 18–19",
+        hoursMon: "Måndag: 18–19",
+        hoursTue: "Tisdag: 18–19",
+        hoursWed: "Onsdag: 18–19",
+        hoursThu: "Torsdag: 18–19",
+        hoursFri: "Fredag: 18–19",
+        hoursSat: "Lördag: 18–19",
+        events: "Evenemang",
+        eventsTitle: "Kommande Evenemang",
+        eventsDiwali: "🪔 Diwali Festival – November",
+        eventsPuja: "🕉️ Veckovis Puja – Varje söndag",
+        eventsHoli: "🎉 Holi Firande – Mars",
+        eventsGanesh: "🙏 Special Aarti för Ganesh Chaturthi – Augusti",
+        gallery: "Galleri",
+        galleryTitle: "Galleri",
+        galleryText: "Kommer snart: Foton från våra tempelaktiviteter och festivaler.",
+        contact: "Kontakt",
+        contactTitle: "Kontakt",
+        contactEmail: "E-post: <a href='mailto:board@ahma.se'>board@ahma.se</a>",
+        contactPhone: "Telefon: [Kommer snart]",
+        contactSwish: "Swish: <strong>123 077 1881</strong>",
+        donateBtn: "📱 Donera via Swish",
+        swishInstruction: "Öppna din Swish-app och skicka till:",
+        swishThanks: "Tack för ditt stöd!",
+        followUsTitle: "Följ oss"
       }
     };
 
     function setLanguage(lang) {
       document.querySelectorAll('nav a').forEach(el => {
         const key = el.getAttribute('data-lang');
-        if (translations[lang][key]) el.textContent = translations[lang][key];
+        if (key && translations[lang][key]) el.textContent = translations[lang][key];
       });
       for (const key in translations[lang]) {
-        document.querySelectorAll(`[data-lang="${key}"]`).forEach(el => {
+        const elements = document.querySelectorAll(`[data-lang="${key}"]`);
+        elements.forEach(el => {
           el.innerHTML = translations[lang][key];
         });
       }
     }
+
     setLanguage('en');
 
+    function playBell() {
+      document.getElementById('bell-sound').play();
+    }
     function showSwish() {
       const box = document.getElementById('swish-box');
       box.style.display = box.style.display === 'none' ? 'block' : 'none';
